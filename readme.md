@@ -104,7 +104,7 @@ let numero1 = prompt('Ingrese un numero');
 let numero2 = prompt('Ingrese otro numero');
 
 // Formas de pasar de str a numero int o float
-let resultado = parseFloat(numero1) + parseFloat(numero2);
+let resultado = parseFloat(numero1) + parseFloat(numero2); // o parseInt
 let resultado = Number(numero1) + Number(numero2)
 let resultado = (+numero1) + (+numero2)
 alert("el resultado es: " + resultado)
@@ -130,3 +130,66 @@ La setencia alert() mostrara una ventana sobre la pagina web que estamos accedie
 ~~~js
 alert("Hola soy un mensaje de alerta!");
 ~~~
+
+## Control de flujo
+
+Es marcar puntos en nuestra plicacion donde, a partir de alguna evaluacion, nuestro programa puede tomar varios caminos posibles de accion.
+
+### Valores booleanos
+
+Para generar estos controles empezamos a trabajar con los valores booleanos. Estos pueden tomar dos valores posibles, true o false
+Asi, para que nuestro programa toma un camino u otro le vamos a decir que resuelva alguna evalucacion/ comparacion.
+Si es verdadero(true) toamar aun camino, si no(false), tomara otro camino.
+~~~js
+let variableBooleana;
+variableBooleana = true;
+variableBooleana = false;
+~~~
+
+## Estructura If Else
+
+Si la condicion se cumple, verdadero, se ejecuta lo que esta dentro del bloque, si no se ejecuta con lo que esta en el else, y de ahi va seguir con todo el bloque de codigo
+
+
+~~~js
+// si - condicion
+if (condicion) {
+    //
+    console.log('vas a ver este mensaje');
+} else { // sino
+    console.log('si no se ejecuta este codigo')
+}
+~~~
+
+### Condicionales anidadas
+
+~~~js
+let nombreUsuario = prompt('Ingrese su nombre de usuario: ');
+let contrasena;
+if ( nombreUsuario != ''){
+    contrasena = prompt('Ingrese su contresna: ');
+    if(contrasena != ''){
+        console.log('El usuario ingreso datos en el nombre y contrasena')
+    } else {
+        console.log('La contrasena esta vacia')
+    }
+} else{
+    console.log('El usuario ingreso un nombre vacio')
+}
+
+// si no estan los else if (condicion)
+~~~
+
+### Comparacino
+
+Cuando utilizamos operadores matematicos, entre dos valores numericos, estos resuelven un nuevo tipo de valor numerico que es el resultado de la operacion. Cuando comparamos dos vaolores a traves de un operador de comparacion, esta operacion siempre se resuelve en true o false, es decir la comparacion es verdadero o false.
+
+- es igual  ==
+- es estrictamente igual ===
+- es distinto !=
+- es estrictamente distinto !==
+- meno, menor igual, mayor, mayor igual <, <=, >, =>
+- and &&
+- or ||
+- not !
+
