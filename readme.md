@@ -192,4 +192,3 @@ Cuando utilizamos operadores matematicos, entre dos valores numericos, estos res
 - and &&
 - or ||
 - not !
-
