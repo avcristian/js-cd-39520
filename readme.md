@@ -189,6 +189,46 @@ Cuando utilizamos operadores matematicos, entre dos valores numericos, estos res
 - es distinto !=
 - es estrictamente distinto !==
 - meno, menor igual, mayor, mayor igual <, <=, >, =>
-- and &&
-- or ||
-- not !
+- Operadores logicos
+    - and &&
+    - or ||
+    - not !
+
+## Ciclos / Iteraciones
+
+Los ciclos repiten un bloque de codigo y se vuelve a evaluar la condicion si esta se cumple se repite el bloque de codigo, hasta que sea falsa.
+
+- Bucles en JavaScript
+    * For
+        - Sentencia break
+        - Sentencia continue
+    - While
+    - Do... while
+- Estructura switch (No tiene nada que ver con los ciclos)
+
+Los ciclos, tambien conocidos como bucles o iteraciones **son un medio rapido y sencillo para hacer algo rapidamente**.
+Si tenemos que hacer alguna opreacion mas de una vez en el programa, de forma consecutiva, usaremos las estructuras de bucles en JavaScript `for, while o do... while`.
+
+- Tipos de bulces
+    - Ciclos por conteo : Repiten un bloque de codigo un numero de veces especifica. Estructura `for`.
+    - Ciclos condicionales: Repiten un blque de codigo mientreas la condicion evaluada es verdadera. Estructuras `while` y `do... while`.
+
+---
+
+Estructura de FOR
+
+El **'desde'** es la zona en la que se establecen los valores iniciale de las variables que controlan el ciclo.
+El **'hasta'** es el unico elemento que decide si se repite o se detiene el ciclo.
+La **'actualizacion'** es el nuevo valor que se asigna despues de cada repeticion a las variables que controlan que controlan el bucle
+
+~~~js
+// FOR
+for(desde; hasta; actualizacion){
+    ... // lo que se escribe aca se ejecutara las veces que dure el ciclo
+}
+
+for(let i = 1; i <= 10; i++){
+    console.log(i);
+}
+console.log('Resto del codigo...');
+~~~
