@@ -232,3 +232,96 @@ for(let i = 1; i <= 10; i++){
 }
 console.log('Resto del codigo...');
 ~~~
+
+## Falta ver la clase de bucles minuto 26 quede
+
+## Fucniones
+
+Es muy habitual utilizar una y otra vez las mismas intrucciopnes.
+Separan el codigo en bloques para poder realizar otro tipo de cosas.
+En programacion, una funcion es un conjunto de intrucciones que se agrupan para realizar una tarea concreta, que luego se puede reutilizar a lo largo de diferentes instancias del codigo.
+Las funciones en todo lenugaje son instrucciones que van a realizar una accion
+
+- Ventajas:
+    - evitra instrucciones duplicadas.
+    - Soluciona un porblema complejo usando tareas sencillas, con esto debemos separar en pequenas tareas para poder resolver un problema.
+    - Focaliza tareas prioritarias para el programa.
+    - Aporta ordenamiento y entendimiento al codigo.
+    - Aporta facilidad y rapidez para hacer modificaciones.
+
+### Declaracion
+
+Se declara a traves de la palbra reservada `function`. Deben tener un nombre en minusucla y sin espracion seguidos de los caracteriricos parenteiss(). El contenido de la fucniona se escribe entre llaves. El nombre no se puede repetir en otra.
+Para utilizar la funcion, llamamos / invocamos la funcion, es unicamente llamar a la funcion que declaramos
+
+~~~js
+// forma declarativa
+function saludar(){ // inicializamos la funcion
+    console.log('Hola Mundo!'); // cuerpo de la funcion
+}
+
+saludar(); // Aca se llama la fucnion
+~~~
+
+### Parametros
+
+Una funcion simple, puede no necesitar ningun dato para funcionar.
+Pero cuando empezamos a codificar fuciones mas complejas, nos enocntramos con la necesidad de reibir cierta informacion.
+Cuando enviamos al a funcion uno o mas valores para ser empleados en sus operaciones, estamos hablando de los parametros de la funcion.
+Los parametros se enviar a la funcion mediante variables y se colocan entre los parentesis posteriores al nombre de la funcion.
+
+Los parametros son varialbes que se declaran dentro de la funcion, entre sus parentesis. Los valores de estos se definene luego en el llamado.
+~~~js
+// forma declarativa
+function sumar(a, b){ // inicializamos la funcion y agregamos parametros
+    console.log(a + b); // cuerpo de la funcion
+}
+
+sumar(12, 23); // Aca se llama la fucnion
+~~~
+
+### Return
+
+En el ejemplo anterior sumamos dos numeros a una variable declarada anteriormente. Pero las funciones pueden generar un valor de retorno usando la palabra `return`, obteniendo el valor cuando la fucnion es llamada.
+
+~~~js
+function sumar(a, b){
+    return a + b;
+}
+
+let resultado = sumar(1, 12); // Aca se guarda el valor que nos retorna la funcion
+
+console.log(resultado); // suma total
+~~~
+
+## Funciones anonimas y funcinoes flecha
+
+### Anonimas
+Una funcion anonima es una funcion que se define sin nombre y se utiliza para se pasada como parametro o asiganad a una variable.
+En el caso de asinarlas a una variable, pueden llamar usando el identificador de la variable declarada.
+
+~~~js
+// Generalemente, se asignan a variables constantes
+const suma = function(a,b) { return a + b }
+const resta = function(a,b){ return a - b }
+
+console.log(suma(1, 1)) //2
+console.log(resta(15, 5)) //15
+~~~
+
+### flechas
+
+Identificamos a las funciones flechas como funciones anonimas de sintaxis simplificada. Esnta disponibles desde la version ES6 de JS, no usan palabra function pero usa => (flecha) en los parametro y el bloque.
+
+~~~js
+const suma = (a, b) => { return a + b }
+// si es una funcion de una sola linea con retrono podemos evitar escribir el cuerpo.
+const resta = (a, b) => a - b;
+const saludar = () =>{
+    console.log('Hola');
+}
+
+console.log(suma(1, 1));
+console.log(resta(15, 5));
+saludar();
+~~~
