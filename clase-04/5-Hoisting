@@ -1,0 +1,21 @@
+////Hoisting
+////javascript primero repasa todo el codigo buscando DECLARACIONES
+////luego interpreta el codigo
+///la primera declaracion (function declarativa) funciona porque function se registra primero y despues se ejecuta el codigo
+////la expresion de funcion no funciona porque la funcion no esta DECLARADA, solo la variable/constante
+
+
+saludar2(); ///funciona
+
+function saludar2() {
+    console.log('hola!');
+}
+
+saludar3(); ///no funciona aqui ya que no sabe que saludar3 es una funcion aun
+
+let numerito;
+numerito = 5;
+
+const saludar3 = function() {
+    console.log('hola que tal!');
+}
