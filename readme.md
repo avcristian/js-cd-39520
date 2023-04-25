@@ -215,7 +215,7 @@ Si tenemos que hacer alguna opreacion mas de una vez en el programa, de forma co
 
 ---
 
-Estructura de FOR
+### Estructura de FOR
 
 El **'desde'** es la zona en la que se establecen los valores iniciale de las variables que controlan el ciclo.
 El **'hasta'** es el unico elemento que decide si se repite o se detiene el ciclo.
@@ -231,9 +231,149 @@ for(let i = 1; i <= 10; i++){
     console.log(i);
 }
 console.log('Resto del codigo...');
+
+//Ejemplo practico For(1) tablas
+//Algoritmo para calcular la tabla de multiplicar de un numero
+let ingresarNumero = parseInt(prompt('Ingresar numero'));
+// en cada repeticion, calculamos el numero ingresado (x) el numero de repeticion (i)
+for(let i = 1; i <= 10; i++){
+    let resultado = ingresarNumero * i;
+    alert(ingresaNumero + " X" + i + "= " + resultado);
+}
+
+//Ejemplo practico FOR(2): Turnos
+//algoritmo para dar turnos del 1 al 20 a los nombres ingresados.
+for(let i = 1; i <= 20; i++){
+    //En cada repetecicion solicitamos un nombre.
+    let ingresarNombre = prompt("ingresar nombre");
+    //Informamos el turno asignado usando el numero de repeticion (i).
+    alert(" Turno Nro "+i+" Nombre: " + ingresarNombre);
+}
 ~~~
 
-## Falta ver la clase de bucles minuto 26 quede
+### Setencia Break
+
+A veces, cuando escribimos una estructura **for**, necesitamos que bajo cierta condicion el ciclo se interrumpa. Para eso se utiliza la sentencia break.
+Al escribir esa linea dentro de un cicle for, el mismo se interrumpira como si hubiera finalizado.
+
+~~~js
+for(let i = 1; i <= 10; i++){
+    // si la variable es igual 5 interrupo el for
+    if(i == 5){
+        break;
+    }
+    alert(i);
+}
+~~~
+
+### Sentencia Continue
+
+A ve ces, cuando escribimos una estructura **for**, necesitamos que bajo cierta condicion el ciclo saltee esa repeticion y siga con la proxima, Para eso se utiliza la **sentencia continue**.
+
+~~~js
+for(let i = 1; i <= 10; i++){
+    //Si la variable i es 5, no se interpreta la repeticion
+    if(i == 5){
+        continue;
+    }
+    alert(i);
+}
+~~~
+
+### WHILE
+
+La estructura **while** permite crear bucles que se ejecutan cero o mas veces, dependiendo de la condicion indicada.
+El funcionanmiento del bucle **while** se reume en: **mientras se cumpla la condicion indicada, repite las intrucciones inluidas dentro del bucle.**
+
+Cuando usamos **while**, asumimos que en algun momento la repeticion va a finalizar; si la comparacion no se realiza adecuadamente podemos generar el llamado "bule infinito";
+
+~~~js
+//Bucle infinito
+let repetir = true;
+while(repetir){
+    console.log("Al infinito y ... Mas alla!");
+}
+
+//Ejemplo aplicado de WHILE: ESC
+//Algoritmo que solicita una entrada al usuario hasta que ingresa "ESC"
+let entrada = prompt('Ingresar un dato');
+//Repetimos con while hasta que el usuario ingresa "esc"
+while(entrada != 'esc'){
+    alert('El usuario ingreso ' + entrada);
+    //Volvemos a solicitar un dato. En la proxima iteracion se evalua si no es ESC.
+    entrada = prompt('ingresar otro dato');
+}
+~~~
+
+### DO... WHILE
+
+La estructura do... while permite crear bucles que se ejecutan una o mas veces, dependiendo de la condicion indicada.
+A diferencia de while, **garantiza que el bloque de codigo se interpreta al menos una vez, porque la condicion se evalua al final.**
+
+~~~js
+let repetir = false;
+do{
+    console.log('Solo una vez!');
+} while(repetir);
+
+//Ejemplo aplicado DO... WHILE
+//Algoritmo que solicita una entrada y se detiene cuando NO es un numero
+let numero = 0;
+do{
+    //repetimos con do... while mientras el usuario ingresa un numero
+    numero = prompt('Ingresar Numero');
+    console.log(numero);
+    //Si el parseo no resulta un numero se interrumpe el bucle.
+} while(parseInt(numero));
+~~~
+
+### Switch
+
+La estructura switch esta especialmente diseñada para manejar de forma sencilla **multiples condiciones sobre la misma variable** (tecnicamente se podria resolver un if, pero el uso de switch es mas ordenado).
+Su definicion formal puede parecer confusa, pero veamos un ejemplo para entender su simpleza.
+
+Cada condicion se evalua y, si se cumple, se ejecuta lo que esta indicado de cada **case**.
+Normalmente, despues de las instrucciones de cada case se incluye la sentencia **break** para terminar la ejecucion del **switch**, aunue no es obligatorio.
+Que sucede si ningun valor de la variable del switch coincide con los calores definidos en los **case**?
+En este caso, se utiliza el valor **default** para indicar las instrucciones que se ejecutan cuando ninguna condicion anterior se cumplio.
+
+~~~js
+let numero = Number(prompt('Ingrese un numero'));
+
+switch (numero){
+    case 5:
+        ...
+        break;
+    case 8:
+        ...
+        break;
+    case 20:
+        ...
+        break;
+    default:
+        ...
+        break;
+}
+
+// ejemplo aplicado: while y switch
+// algoritmo que hace la operacion segun la entrada, pero ignora la ejecucion de bloque si la entrada es ESC.
+let entrada = prompt('ingresar un nombre');
+// repetimos hasta que se ingresa 'ESC'
+while(entrada != 'esc'){
+    switch(entrada){
+        case 'ANA':
+            alert('Hola ANA');
+            break;
+        case 'JUAN':
+            alert('Hola Juan');
+            break;
+        default:
+            alert('Quien sos?');
+            break
+    }
+    entrada = prompt('ingresar un nombre');
+}
+~~~
 
 ## Fucniones
 
@@ -251,7 +391,7 @@ Las funciones en todo lenugaje son instrucciones que van a realizar una accion
 
 ### Declaracion
 
-Se declara a traves de la palbra reservada `function`. Deben tener un nombre en minusucla y sin espracion seguidos de los caracteriricos parenteiss(). El contenido de la fucniona se escribe entre llaves. El nombre no se puede repetir en otra.
+Se declara a traves de la palbra reservada **`function`**. Deben tener un nombre en minusucla y sin espracion seguidos de los caracteriricos parenteiss(). El contenido de la fucniona se escribe entre llaves. El nombre no se puede repetir en otra.
 Para utilizar la funcion, llamamos / invocamos la funcion, es unicamente llamar a la funcion que declaramos
 
 ~~~js
@@ -297,6 +437,7 @@ console.log(resultado); // suma total
 ## Funciones anonimas y funcinoes flecha
 
 ### Anonimas
+
 Una funcion anonima es una funcion que se define sin nombre y se utiliza para se pasada como parametro o asiganad a una variable.
 En el caso de asinarlas a una variable, pueden llamar usando el identificador de la variable declarada.
 
@@ -325,3 +466,406 @@ console.log(suma(1, 1));
 console.log(resta(15, 5));
 saludar();
 ~~~
+
+- Ejemplo aplicado: Calcular precio
+
+~~~js
+const suma = (a, b) => a + b;
+const resta = (a, b) => a - b;
+
+// si una funcion es una sola linea con retrno y un parametro puede evitar escrbir los ()
+const iva = x => x * 0.21;
+
+let precio
+~~~
+
+### Scope
+
+El scope o **ambito** de una variable es la zona del programa en la cual se define, el contexto al que pertenece la misma dentro de un algoritmo, registriendo su uso y alcance.
+
+JavaScript define dos ambitos para las variables: **global y local**.
+
+#### Variables globales
+
+Si una variable se declara fuera de cualquier funcion o bloque, automaticamente se transforma en variable global.
+
+~~~js
+let resultado = 0;
+function sumar(primerNumero, segundoNumero){
+    resultado = primerNumero + segundoNumero;
+}
+
+sumar(5, 6);
+//Se puede acceder a al variable resultado porque es golbal
+console.log(resultado); // devuelve el valor de la suma, y la variable ya obtiene ese valor.
+~~~
+
+#### Variables locales
+
+Cuando definimos una variable dentro de una funcion o bloque es una varialbe local, y sera accesible solo dentro de ese espacio. **Si queremos utilizar por fuera, la variable no existiria para JS.**
+
+~~~js
+function sumar(primerNumero, segundoNumero){
+    let resultado = primer numero + segundoNumero;
+}
+// No se puede acceder a la variable resultado fuera del bloque.
+console.log(resultado); //resultado is not undefined.
+~~~
+
+#### Variables locales y globales
+
+Hay que entender que las varialbes globales y locales se identifican como diferentes entre si, y pueden existir en el programa bajo el mismo nombre sin conflicto.
+
+~~~js
+let nombre = 'John Doe';
+function saludar(){
+    let nombre = 'juan coder'
+    console.log(nombre);
+}
+//Accede a nombre global.
+console.log(nombre);
+
+//Accede a nombre local
+saludar(); // Juan coder
+~~~
+
+- Scope: Entender que cada scope local es un espacion cerrado nos permite crear bloques de trabajo bien diferenciados e independientes, sin preocuparnos por repetir nombres de variables, sabiendo que se entienden como diferentes segundo donde los llamemos.
+
+~~~js
+function sumar(num1, num2){
+    let resultado = num1 + num2;
+    return resultado;
+}
+
+function restar(num1, num2){
+    let resultado = num1 - num2;
+    return resultado;
+}
+~~~
+
+## Objetos
+
+En SJ, los objetos son estructuras que podemos definir para agrupar valor bajo un mismo criterio. Podemos decir que **un objeto es una colecccion de datos relacionados como una entidad**. Se componen de un listado de pares clave-valor, es decir **propiedades y valores** agrupados.
+
+- Porque usamos objetos?
+    - La utilidad de los objetos deviene de su composicion por varios valores y operaciones comunes (funciones) para todos los elementos, de este tipo y sus propiedades.
+
+~~~js
+const persona1 = {nombre: "Homero", edad: 39, calle: "Av. Siempreviva 742"};
+~~~
+
+### Anatomia de un objeto
+
+Un objeto literal se define directamente entre llaves {}. Los valores que almacenan se listan separados por coma, bajo la forma propiedad: valor.
+
+~~~js
+const persona1 = {
+    nombre: "Homer",
+    edad: 39,
+    calle: "Av. Siempreviva 742"
+};
+~~~
+
+### Obteniendo valores del objeto
+
+#### Notacion de punto
+
+Para obtener el valor de una propiedad en un objeto utilizamos la notacion de punto **(.)**: El nombre de la variable del obejto, seguido de punto y nombre de la propiedad:
+
+~~~js
+const persona1 = {
+    nombre: "Homer",
+    edad: 39,
+    calle: "Av. Siempreviva 742"
+};
+
+console.log(persona1.nombre);
+console.log(persona1.edad);
+console.log(persona1.calle);
+~~~
+
+#### Notacion de corchete
+
+Otra forma de obtener el valor de una propuedad en un objeto utilizamos la notacion de corchetes **([])**: el nombre de la variable del objeto, seguido de corchetes y dentro de ellos un string del nombre de la propiedad:
+
+~~~js
+const persona1 = {
+    nombre: "Homer",
+    edad: 39,
+    calle: "Av. Siempreviva 742"
+};
+
+console.log(persona1['nombre']);
+console.log(persona1['edad']);
+console.log(persona1['calle']);
+~~~
+
+#### Asignar valores a las proopiedades
+
+Es posible usar las dos formas(corchetes y parentesis) para acceder a las propiedades y asignar nuevos valores a los datos almacenados en las propiedades del objeto.
+
+~~~js
+const persona1 = {
+    nombre: "Homer",
+    edad: 39,
+    calle: "Av. Siempreviva 742"
+};
+
+persona1['nombre'] = 'Marge';
+persona1.edad = 36;
+~~~
+
+### Operador IN y FOR ... IN
+
+El operador **in** devuelve true si la propiedad especifica existe en el objeto.
+Mientras que el bucle **for ... in** permite acceder a todas las propiedades del objeto, obteninendo una propiedad por cada itereacion.
+
+~~~js
+const persona1 = {
+    nombre: "Homer",
+    edad: 39,
+    calle: "Av. Siempreviva 742"
+};
+
+// devuelve true porque la clave nombre existe en el objeto persona1
+console.log('nombre' in persona1);
+
+// devuelve false porque la clave 'origen' no existe en el objeto peronsa1
+console.lgo('orige' in persona1);
+
+// recorremos todas las propiedad del objeto con el ciclo for ... in
+for(const propiedad in persona1){
+    console.log(perona1[propiedad]);
+}
+~~~
+
+### Constructores
+
+En js, **el constructor de un objeto es una funcion que usamos para crear un nuebo objeto cada vez que sea necesario.** Con esta 'funcion constructora' podemos inicializar las propiedades del objeto al momento de ser instanciado como **new**.
+
+~~~js
+function Persona(nombre, edad, calle){
+    this.nombre = nombre;
+    this.edad = edad;
+    this.calle = calle;
+};
+
+const persona1 = new Persona('Homero', 39, 'Av. Siempreviva 732');
+const persona2 = new Persona('Marge', 36, 'Av. Siempreviva 732');
+~~~
+
+En este ejemplo, se define la funcion Persona, donde se asignan las diferentes propiedades con los valores recibidos como parametros.
+En algun lugar del codigo, se puede construir un objeto Persona declarando una variable y asignando la referencia del objeto instanciado mediante la instruccion **new Persona()**
+
+#### Uso de THIS
+
+La palabra clave **this** ('este') refiere al elemento actual en el que se esta escribiendo el codigo. Cuando se emplea una funcion constructora para crear un objeto (con la palabra clave new), **this** esta enlazada al nuevo objeto instanciado.
+**This** es muy util para asegurar que se emplean las propiedades del objeto actual.
+
+~~~js
+function Persona(literal){
+    this.nombre = literal.nombre;
+    this.edad = literal.edad;
+    this.calle = literal.calle;
+}
+
+const persona1 = new Persona({
+    nombre: 'Homero',
+    edad: 39, 
+    calle: 'Av. Siemprevivia 742'
+});
+~~~
+
+### Metodos en objetos JS
+
+JavaScript cuenta con sus poropios objetos, por ejemplo: cada vez que creamos una cadena de caracteres se crea automaticamente como una instancia del objeto String y, por lo tanto, tiene varios metodos / propiedades comunes disponibles en ella.
+
+~~~js
+let cadena = 'HOLA CODER';
+//Propiedad de objeto String: largo de la cadena.
+console.log(cadena.length);
+
+//Pasar a minusculas
+console.log(cadena.toLoweCase());
+
+//Pasar a mayusculas
+console.log(cadena.toUpperCase());
+~~~
+
+#### Metodos personalizados
+
+Podemos crear nuestros propios **metodos para objetos personalizados, referenciando funciones por su nombre o definiendo funciones anonimas asociadas a una propiedad de la funcion constructora.**
+Llamar a un metodo es similar a acceder a una propiedad, pero se agrega() al final del nombre del metodo, posiblemente con argumentos.
+
+~~~js
+function Persona(nombre, edad, calle){
+    this.nombre = nombre;
+    this.edad = edad;
+    this.calle = calle;
+    this.hablar = function(){ console.log('Hola soy ' + this.nombre) };
+};
+
+const persona1 = new Persona('Homero', 39, 'Av. Siempreviva 742');
+const persona2 = new Persona('Marge', 36, 'Av. Siempreviva 742');
+
+persona1.hablar();
+persona2.hablar();
+~~~
+
+## Clases
+
+Las **clases** de JavaScript, introducidas en ES6, proveen una sintaxis mucho mas clara y simple para crear objetos personalizados.
+**Son una equivalencia al empleo de funcion constructora y permite definir distintos tipos de metodos.**
+
+~~~js
+class Persona {
+    constructor(nombre, edad, calle){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.calle = calle;
+    }
+}
+
+const persona1 = new Persona('Homero', 39, 'Av. Siempreviva 742');
+~~~
+
+### Clases y Metodos
+
+En la declaracion de clase, **la funcion constructora es remplazada por el metodo constructor.** Los metodos en las clases no referencian a propiedades, se declaran dentro del bloque sin la plabra **function**.
+
+~~~js
+class Persona{
+    constructor(nombre, edad, calle){
+        this.nombre = nombre;
+        this.edad = edad;
+        this.calle = calle;
+    }
+    hablar(){
+        console.log('Hola soy' + this.nombre);
+    }
+}
+
+const persona1 = new Persona('Homero', 39, 'Av. Siempreviva 742');
+persona1.hablar();
+
+// Ejemplo aplicado clase producto
+
+class Producto{
+    constructor(nombre, precio){
+        this.nombre = nombre.toUpperCase();
+        this.precio = parserFloat(precio);
+        this.vendido = false; 
+    }
+    sumaIva(){
+        this.precio = this.precio * 1.21;
+    }
+    vender(){
+        this.vendido = true;
+    }
+}
+
+const producto1 = new Producto('arroz', '125');
+const producto2 = new Producto('fide', '50');
+
+producto1.sumarIva();
+producto2.sumarIva();
+producto1.vender();
+~~~
+
+## Arrays
+
+Un array es un **tipo de dato que sirve para almacenar valores en forma de lista**. Puede ser una coleccion de numeros, strings, booleanos, objetos o hasta una lista de listas.
+Los **valores** del array puede ser distintos y es posible agregar o quitar elementos en todo momento.
+Los elementeos del arrray **tienen un indice**, que va desde el 0(el primer elemento del array) hasta el ultimo elemento.
+
+### Declaracion del array
+
+Para declarar una variable y asiganar un array empleamos los **corchetes (**[]**)** y dentro de ellos definimos todos los valores separados por coma.
+Los array en js empiezan siempre en la posicion 0. Un array que tenga, por ejemplo, 10 elementos, tendra posiciones de 0 a 9.
+
+~~~js
+// declaracion de array vacio
+const arrayA = [];
+
+//declaracion de array con nymeros
+const arrayB = [1, 2];
+
+//array con strings
+const arrayC = ['c1', 'c2', 'c3'];
+
+//array con booleanos
+const arrayD = [true, false, true, false];
+
+//array mixto
+const arrayE = [1, false, 'E1'];
+~~~
+
+#### Acceso al array
+
+Los elementos dentro de un array tienen un indice que determina su posicion en el mismo.
+Asi, es posible acceder a los elementos dentro de un array a traves de su posicion:
+
+~~~js
+const numeros = [1, 2, 3, 4, 5];
+console.log(numeros[0]); //1
+console.log(numeros[3]); //4
+
+let resultado = numeros[1] + numeros[2];
+console.log(resultado) // 5
+~~~
+
+#### Recorrido del array
+
+Decimos que estamos recorriendo un array cuando empleamos un bucle para acceder a cada elemento por separado.
+Los array en Js son **objetos iterables**, lo que permite usar distintas estructuras para iterar sobre ellos.
+
+~~~js
+const numeros = [1, 2, 3, 4, 5];
+for(let index = 0; index < numeros.length(); index++){
+    alert(numeros[index]);
+}
+~~~
+
+### Metodos y propiedades
+
+#### Length
+
+Al igual que en un String, la **propiedad Length** nos sirve para obtener el largo de un array, es decir, para identificar cuantos elementeos tiene.
+
+~~~js
+const miArray = ['marca', 3, 'palbra'];
+console.log(miArray.length());
+~~~
+
+Es comun utilizarlo para definir el limite de itereaciones sobre un array, ya que la propiedad length me permite saber explicitamente la longitud del mismo
+
+~~~js
+const numeros = [1, 2, 3, 4, 5];
+for(let i = 0; i < numeros.length; i++){
+    alert(numeros[i]);
+}
+~~~
+
+#### Agregar elementos
+
+Para sumar un elemento a un array que ya existe, se utiliza el **metodo push**, pasando como parametro el valor (o variable) a agrega.
+
+~~~js
+const miArray = ['Marca', 3, 'palabra'];
+miArray.push('Otro elemento');
+console.log(miArray.length) //4
+console.log(miArray)
+//['Marca', 3, 'palabra', 'Otro elemento']
+~~~
+
+El **metodos push ()** agrega elementos al final del array. Si queremos agregar al inicia del array, utilizamos el metodo **unshift()** de forma similar:
+
+~~~js
+const miArray = ['Marca', 3, 'palabra'];
+miArray.unshift('Otro elemento');
+console.log(miArray.length) //4
+console.log(miArray)
+//['Otro elemento', 'Marca', 3, 'palabra']
+~~~
+
+#### Quitar elementos
