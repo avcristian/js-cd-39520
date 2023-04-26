@@ -15,8 +15,8 @@ Lenguaje interpretado, a diferencias de un lenguaje de programacion compilado, j
 
 - Diferencias entre backend y frontend
 javaescript nos sirve para ambos ambitos del desarrollo tanto en backend como frontend.
-    - frontend: son la primera linea en contra el usuario, es la parte visual donde interactua.
-    - backend: el backend es el que maneja toda la informacion que se pide desde el frontend.
+  - frontend: son la primera linea en contra el usuario, es la parte visual donde interactua.
+  - backend: el backend es el que maneja toda la informacion que se pide desde el frontend.
 
 ## Algoritmos
 
@@ -53,8 +53,8 @@ Esto lo vamos a ir llenando a partir de las cosas que vamos viendo, de momento s
 Podemos asociar distintos valores en una variable en JS.
 
 - number: un valor numerico puede ser un entero o decimal.
-    - int
-    - float
+  - int
+  - float
 - string: una cadena de datos.
 
 ~~~js
@@ -140,6 +140,7 @@ Es marcar puntos en nuestra plicacion donde, a partir de alguna evaluacion, nues
 Para generar estos controles empezamos a trabajar con los valores booleanos. Estos pueden tomar dos valores posibles, true o false
 Asi, para que nuestro programa toma un camino u otro le vamos a decir que resuelva alguna evalucacion/ comparacion.
 Si es verdadero(true) toamar aun camino, si no(false), tomara otro camino.
+
 ~~~js
 let variableBooleana;
 variableBooleana = true;
@@ -149,7 +150,6 @@ variableBooleana = false;
 ## Estructura If Else
 
 Si la condicion se cumple, verdadero, se ejecuta lo que esta dentro del bloque, si no se ejecuta con lo que esta en el else, y de ahi va seguir con todo el bloque de codigo
-
 
 ~~~js
 // si - condicion
@@ -190,28 +190,28 @@ Cuando utilizamos operadores matematicos, entre dos valores numericos, estos res
 - es estrictamente distinto !==
 - meno, menor igual, mayor, mayor igual <, <=, >, =>
 - Operadores logicos
-    - and &&
-    - or ||
-    - not !
+  - and &&
+  - or ||
+  - not !
 
 ## Ciclos / Iteraciones
 
 Los ciclos repiten un bloque de codigo y se vuelve a evaluar la condicion si esta se cumple se repite el bloque de codigo, hasta que sea falsa.
 
 - Bucles en JavaScript
-    * For
+  - For
         - Sentencia break
         - Sentencia continue
-    - While
-    - Do... while
+  - While
+  - Do... while
 - Estructura switch (No tiene nada que ver con los ciclos)
 
 Los ciclos, tambien conocidos como bucles o iteraciones **son un medio rapido y sencillo para hacer algo rapidamente**.
 Si tenemos que hacer alguna opreacion mas de una vez en el programa, de forma consecutiva, usaremos las estructuras de bucles en JavaScript `for, while o do... while`.
 
 - Tipos de bulces
-    - Ciclos por conteo : Repiten un bloque de codigo un numero de veces especifica. Estructura `for`.
-    - Ciclos condicionales: Repiten un blque de codigo mientreas la condicion evaluada es verdadera. Estructuras `while` y `do... while`.
+  - Ciclos por conteo : Repiten un bloque de codigo un numero de veces especifica. Estructura `for`.
+  - Ciclos condicionales: Repiten un blque de codigo mientreas la condicion evaluada es verdadera. Estructuras `while` y `do... while`.
 
 ---
 
@@ -383,11 +383,11 @@ En programacion, una funcion es un conjunto de intrucciones que se agrupan para 
 Las funciones en todo lenugaje son instrucciones que van a realizar una accion
 
 - Ventajas:
-    - evitra instrucciones duplicadas.
-    - Soluciona un porblema complejo usando tareas sencillas, con esto debemos separar en pequenas tareas para poder resolver un problema.
-    - Focaliza tareas prioritarias para el programa.
-    - Aporta ordenamiento y entendimiento al codigo.
-    - Aporta facilidad y rapidez para hacer modificaciones.
+  - evitra instrucciones duplicadas.
+  - Soluciona un porblema complejo usando tareas sencillas, con esto debemos separar en pequenas tareas para poder resolver un problema.
+  - Focaliza tareas prioritarias para el programa.
+  - Aporta ordenamiento y entendimiento al codigo.
+  - Aporta facilidad y rapidez para hacer modificaciones.
 
 ### Declaracion
 
@@ -411,6 +411,7 @@ Cuando enviamos al a funcion uno o mas valores para ser empleados en sus operaci
 Los parametros se enviar a la funcion mediante variables y se colocan entre los parentesis posteriores al nombre de la funcion.
 
 Los parametros son varialbes que se declaran dentro de la funcion, entre sus parentesis. Los valores de estos se definene luego en el llamado.
+
 ~~~js
 // forma declarativa
 function sumar(a, b){ // inicializamos la funcion y agregamos parametros
@@ -548,7 +549,7 @@ function restar(num1, num2){
 En SJ, los objetos son estructuras que podemos definir para agrupar valor bajo un mismo criterio. Podemos decir que **un objeto es una colecccion de datos relacionados como una entidad**. Se componen de un listado de pares clave-valor, es decir **propiedades y valores** agrupados.
 
 - Porque usamos objetos?
-    - La utilidad de los objetos deviene de su composicion por varios valores y operaciones comunes (funciones) para todos los elementos, de este tipo y sus propiedades.
+  - La utilidad de los objetos deviene de su composicion por varios valores y operaciones comunes (funciones) para todos los elementos, de este tipo y sus propiedades.
 
 ~~~js
 const persona1 = {nombre: "Homero", edad: 39, calle: "Av. Siempreviva 742"};
@@ -869,3 +870,103 @@ console.log(miArray)
 ~~~
 
 #### Quitar elementos
+
+De forma inversa, existe metodos para eliminar elementos del array.
+
+- Si queremos eliminar **el primer elemento del array** utilizamos el metodo **shift()**
+- Si queremos eliminar **el ultimo elemento**, el metodo **pop()**.
+
+~~~js
+const nombres = ['Luis', 'Ana', 'Julia', 'Juan'];
+
+nombres.pop();
+console.log(nombres) // ['Luis', 'Ana', 'Julia']
+
+nombres.shift();
+console.log(nombres) //['Ana', 'Julia']
+~~~
+
+#### Splice
+
+El **metodo splice()** permite eliminar uno o varios elementos de un array en cualquier posicion. Funciona con 2 parametros: el primero es el **indice** donde se ubica el metodo para trabajar, y el segundo es la **cantidad de elemetnos a eliminar** desde esa posicion.
+
+~~~js
+const nombres = ['Luis', 'Ana', 'Julia', 'Juan'];
+nombres.splice(1, 2); //desde la posicion 1 va a elimiar 2 elementos del array
+
+console.log(nombres);
+// ['Luis', 'Juan']
+~~~
+
+#### Join
+
+Mediante el metodo **join** podemos generar un string con todos los elementos del array, separados por el valor que pasamos por parametro.
+
+~~~js
+const nombres = ['Luis', 'Ana', 'Julia', 'Juan'];
+
+console.log(nombres.join(', '));
+// Luis, Ana, Julia, Juan
+
+console.log(nombres.join(*));
+// Luis*Ana*Julia*Juan
+~~~
+
+#### Concat
+
+Mediante el metodo **contact** podemos combianar dos array en un unico Array resultante:
+
+~~~js
+const perros = ['pupy', 'ronnie'];
+const gatos = ['mishi', 'garfield', 'zuri'];
+const mascotas = perros.concat(gatos);
+console.log(mascotas);
+// [ 'pupy', 'ronnie', 'mishi', 'garfield', 'zuri' ]
+~~~
+
+#### Slice
+
+El metodo slice devuelve una copia de una parte de array dentro de un nuevo array, empemamos con el iniciaio hasta el fin(el fin no incluido). El array original no se modificara.
+
+~~~js
+const nombres = ['rita', 'pedro', 'miguel', 'ana', 'vanesa'];
+const masculinos = nombres.slice(1,3); // nuevo array de la pos 1 a la 3, la 3 no es incluida.
+// [ 'pedro', 'miguel' ]
+~~~
+
+#### IndexOf
+
+El metodo **indexOf()** nos permite obtener el indice de un elementeo en un array.
+Recibe por parametro el elemento que queremos buscar en el array y , en caso existir, nos retorna su indice. Si el elemento no existe nos retornara como valor **-1**
+
+~~~js
+const nombres = ['rita', 'pedro', 'miguel', 'ana', 'vanesa'];
+
+console.log(nombres.indexOf('rita')) // 0
+console.log(nombres.indexOf('ana')) // 3
+console.log(nombres.indexOf('cris')) // -1
+~~~
+
+#### Includes
+
+Similar al antreior, el metodo **includes** me permite saber si un elemento que recibe por parametro existe o no dentro de un array, retornando un valor booleano en caso afirmativo o negativo.
+
+~~~js
+const nombres = ['rita', 'pedro', 'miguel', 'ana', 'vanesa'];
+
+console.log(nombres.includes('rita')) //true
+console.log(nombres.includes('miguel')) //true
+console.log(nombres.includes('cris')) //false
+~~~
+
+#### Reverse
+
+Como su nombres lo indica, el metodo **reverse()** invierte el orde de los elementos dentro de un array.
+Este metodo modifica el array original.
+
+~~~js
+const nombres = ['rita', 'pedro', 'miguel', 'ana', 'vanesa'];
+nombres.reverse()
+console.log(nombres)
+//[ 'vanesa', 'ana', 'miguel', 'pedro', 'rita' ]
+~~~
