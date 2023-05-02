@@ -970,3 +970,41 @@ nombres.reverse()
 console.log(nombres)
 //[ 'vanesa', 'ana', 'miguel', 'pedro', 'rita' ]
 ~~~
+
+### Ejemplo aplicado: Cargar array con entradas
+
+~~~js
+// Declaracion de array vacio y varaible para determinar la contidad
+const listaNombres = [];
+let cantidad = 5;
+
+//empleo de DO ... while para cargar nombres en el array por pormpt
+do{
+    let entrada = prompt('Ingresar nombre');
+    listaNombres.push(entrada.toUpperCase());
+    console.log(listaNombres.length);
+} while(listaNombres.length != cantidad)
+
+// Concatenamos un nuevo array de dos elementos
+const nuevaLista = listaNombres.concat(['ANA','EMA']);
+
+// salida con salto de linea usando join
+alert(nuevaLista.join('\n'));
+~~~
+
+### Ejemplo aplicado: Eliminar cualquier elemento
+
+~~~js
+const nombres = ['rita','pedro','miguel','ana','vanesa'];
+
+//recibo el elemento a borrar por parametro
+const eliminar = (nombre) => { //funcion flecha
+    // busco su indicar en el array
+    let index = nombres.indexOf(nombre);
+
+    //si existe, o sea es distinto a -1, lo borro con splice
+    if(index != -1){
+        nombres.splice(index, 1)
+    }
+}
+~~~ 
