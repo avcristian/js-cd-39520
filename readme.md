@@ -1007,4 +1007,9 @@ const eliminar = (nombre) => { //funcion flecha
         nombres.splice(index, 1)
     }
 }
-~~~ 
+~~~
+
+### Array de objetos
+
+Los array pueden usarse para almacenar **objetos personalizados**.
+Podemos asignar objetos literales o previamente instanciados en la declaracion del array o agregar nuevos objetos usando el **metodo push** y el **constructor**.
