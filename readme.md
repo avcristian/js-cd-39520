@@ -1013,3 +1013,37 @@ const eliminar = (nombre) => { //funcion flecha
 
 Los array pueden usarse para almacenar **objetos personalizados**.
 Podemos asignar objetos literales o previamente instanciados en la declaracion del array o agregar nuevos objetos usando el **metodo push** y el **constructor**.
+
+~~~js
+const objet1 = {id:1, producto: 'Arroz'};
+const array = [objet1, {id: 2, producto: 'Fideo'}];
+array.push({id: 3, producto: 'Pan'});
+~~~
+
+### Arrays mas Objetos
+
+La combinacion de estos genera una estructura compleja de datos.
+Los metos de arrays y las herramientoas para rcorrerlos nos permiten acceder a manipular todos estos datos de forma precisa y prolija.
+
+### For ... of
+
+La sentencia **for ... of** permite recorrer un array ejecutanto un bloque de codigo por cada elemento del objeto.
+
+~~~js
+const productos = [{id: 1, producto: 'Arroz'},
+{id: 2, producto: 'Fideo'},
+{id: 3, producto: 'Pan'}];
+
+for (const producto of productos){
+    console.log(prodcuto.id);
+    console.log(producto.producto);
+}
+~~~
+
+### Ejemplo aplicado:
+
+Objetos, productos y array
+
+~~~js
+
+~~~
