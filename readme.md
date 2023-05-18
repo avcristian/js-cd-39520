@@ -1045,5 +1045,106 @@ for (const producto of productos){
 Objetos, productos y array
 
 ~~~js
+class Producto{
+    constructor(nombre, precio){
+        this.nombre = nombre.toUpperCase();
+        this.precio = parseFloat(precio)
+        this.vendido = false;
+    }
+    sumaIva(){
+        this.precio = this.precio * 1.21;
+    }
+}
 
+//Declaramos un array de productos para almacenar objetos
+
+const productos = [];
+productos.push(new Prodcuto('arroz', '125'));
+productos.push(new Producto('fideo', '70'));
+productos.push(new Producto('pan', '50'));
+
+//Iteramos el array  con for ... of para modificarlos a todos
+
+for (const producto of productos){
+    producto.sumaIva();
+}
 ~~~
+
+## Higher order functions(funciones de alto orden)
+
+Es aquella que bien retorna una funcion, o recibe una funcion por parametro.
+Este tipo de funciones nos permiten abstraernos sobre acciones y nos solo valores.
+
+### Rotornar funciones
+
+En el primer caso, podremos tener una funcion que retorna una funcion, lo cual nos perimitiria crear funciones con un esquema superior.
+
+~~~js
+function mayorQue(n){
+    return (m) => m > n
+}
+// la funcion mayorque, va recibir como parametro n el 10, y cuando realizamos los segundo console.log, le pasamos el parametro m, que es la funcion flecha que nos retorna, o sea que en este caso va a compara m con 10.
+let mayorQueDiez = mayorQue(10);
+
+console.log(mayorQueDiez(12)); // true
+console.log(mayorQueDiez(8)); // false
+~~~
+
+En este caso, **mayorQue(n)** retorna una funcion que compara un valor contra n y retorna true o false(porque es el resultado de la comparacion).
+
+> En mayorQueDiez se termina asignando al funcion que retorna el llamado de mayorQue(10). Al se llamada con el valor 10, la asignacion se resuelve de la siguiente forma: `let mayorQueDiez = (m) => m > 10`
+
+En este ejemplo, segun el parametro **op** se termina asignando un **return de funcion** u otro a las variables declaradas.
+
+~~~js
+function asignarOperacion(op){
+    if(op == 'sumar'){
+        return (a, b) => a + b;
+    } else if(op == 'restar'){
+        return (a, b) => a - b;
+    }
+}
+
+let suma = asignarOperacion('sumar');
+let resta = asignarOperacion('restar');
+
+console.log(suma(4, 6)) // 10
+console.log(resta(4, 6)) // 2
+~~~
+
+### Recibir funciones por parametro
+
+Significa escrbir funciones que puedan recibir funciones por parametro.
+Ejemplo
+~~~js
+function porCadaUno(arr, fn){
+    for(const el off arr){
+        fn(el);
+    }
+}
+~~~
+
+Supongamos que quiero recorrer un array y hacer algo concada uno de sus elementos
+
+Esta funcion recibe un **array** por primer parametro y una **funcion** por el segundo. Recorre el array y, por cada elemento, hace un llamado a la funcion mencionada enviando dicho elemento por parametro.
+
+~~~js
+function porCadaUno(arr, fn){
+    for(const el off arr){
+        fn(el);
+    }
+}
+
+const numeros = [1, 2, 3, 4];
+
+porCadaUno(numeros, console.log) // llamado a la funciona enviando array y funcion.
+//1
+//2
+//3
+//4
+~~~
+
+Enviando **console.log** por parametro, se ejecura esa funcion con cada elemento del array. Podemos enviar funciones diferentes en distintos llamados y ejecutar distintas acciones sobre los elementos del array, **todo con una misma funcion**.
+
+~~~js
+let total = 0
