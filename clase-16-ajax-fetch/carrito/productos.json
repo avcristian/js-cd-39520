@@ -1,0 +1,34 @@
+[
+    {
+        "nombre": "cafe",
+        "precio": 600
+    },
+    {
+        "nombre": "medialuna",
+        "precio": 600
+    },
+    {
+        "nombre": "licuado de fruta",
+        "precio": 600
+    },
+    {
+        "nombre": "jugo de naranja",
+        "precio": 600
+    },
+    {
+        "nombre": "pinta",
+        "precio": 600
+    },
+    {
+        "nombre": "dona",
+        "precio": 600
+    },
+    {
+        "nombre": "cookie",
+        "precio": 600
+    },
+    {
+        "nombre": "scon",
+        "precio": 600
+    }
+]

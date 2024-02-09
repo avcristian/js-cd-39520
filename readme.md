@@ -1040,7 +1040,7 @@ for (const producto of productos){
 }
 ~~~
 
-### Ejemplo aplicado:
+### Ejemplo aplicado
 
 Objetos, productos y array
 
@@ -1116,6 +1116,7 @@ console.log(resta(4, 6)) // 2
 
 Significa escrbir funciones que puedan recibir funciones por parametro.
 Ejemplo
+
 ~~~js
 function porCadaUno(arr, fn){
     for(const el off arr){
@@ -1148,3 +1149,296 @@ Enviando **console.log** por parametro, se ejecura esa funcion con cada elemento
 
 ~~~js
 let total = 0
+const numeros = [1, 2, 3, 4];
+
+function porCadaUno(arr, fn){
+    for(const el off arr){
+        fn(el);
+    }
+}
+
+function acumular(num){
+    total += num;
+}
+
+porCadaUno(numeros, acumular)
+
+console.log(total) //10
+~~~
+
+### Arrow function
+
+es usuarl definir la funcion firectamente sobre el parametro como una funciona anonima, aprovechando la sintaxis de **arrow Function**.
+Esto nos permite definir acciones mas dinamicas.
+
+~~~js
+const duplicado = []
+
+porCadaUno(numeros, (el) => {
+    duplicado.push(el * 2);
+});
+
+console.log(duplicado) // [2,4,6,8]
+~~~
+
+### Metodos de busqueda y transformacion
+
+Cada uno de estos metodos estan pensandos para solucionar problemas recurrentes con los arrays.
+
+- forEach()
+- find()
+- filter()
+- some()
+- map()
+- reduce()
+- sort()
+
+#### For Each
+
+Es similar al ejemplo porCadaUno, itera sobre el array y por cada elemento ejecuta la funcion que enviemos por parametro, la cual recibe a su vez el elemento del array que se esta recorriendo:
+
+~~~js
+const numeros = [1,2,3,4,5,6]
+
+numeros.forEach( (num) => {
+    console.log(num) //recorre el imprime cada valor
+})
+~~~
+
+#### Find
+
+recibe una funcion de comparacion por parametro.
+Captura el elemento que se esta recorriendo y retorna true o dalse segun la comparacion ejecutada. El metodo retrna el primer elemento que cumpla con esa condicion: 
+
+~~~js
+const cursos = [
+    {nombre: 'Javascript', precio: 15000},
+    {nombre: 'ReactJS', precio: 22000},
+]
+
+const resultado = cursos.find((el) => el.nombre === 'ReactJS');
+const resultado2 = cursos.find((el) => el.nombre === 'DW')
+
+console.log(resultado); // { nombre: 'ReactJS', precio: 22000 }
+console.log(resultado2); // undefined
+~~~
+
+Notese que find() retorna el primer elemento del array que cumpla con la condicion enviada, de ahi que podemos almacerlo en una variable o usarlo de referencia para otro proceso. Si no hay ninguna coincidencia en el array, el metodo find retorna **undefined**.
+
+#### Filter
+
+Recibe una funcin comparadora por parametro, y retorna un nuevo array con todos los elementos que complan esa condicion. Si no hay coincidencias, retornada un array vacio.
+
+~~~js
+const cursos = [
+    {nombre: 'Javascript', precio: 15000},
+    {nombre: 'ReactJS', precio: 22000},
+    {nombre: 'AngularJS', precio: 22000},
+    {nombre: 'Desarrollo Web', precio: 16000}
+]
+
+const resultado = cursos.filter((el) => el.nombre.includes('JS'));
+const resultado2 = cursos.filter((el) => el.precio < 14000);
+
+console.log(resultado)
+/*
+[
+  { nombre: 'ReactJS', precio: 22000 },
+  { nombre: 'AngularJS', precio: 22000 }
+]
+*/
+console.log(resultado2) // []
+~~~
+
+#### Some
+
+Recibe por parametro una funcion de busqueda. En vez de retornar el elemento encontrado, retorna true o false, segun el resultado de la iteracion de busqueda.
+
+~~~js
+console.log(cursos.some((el) => el.nombre == 'Desarrollo Web')) // true
+console.log(cursos.some((el) => el.nombre == 'VueJS')) // false
+~~~
+
+#### Map
+
+Crea un nuevo array con todos los elementos del origfinal transformados segun las operaciones de la funcion enviada por parametro. Tiene la misma cantidad de elementos pero los almacenados son el return de la funcion:
+
+~~~js
+const cursos = [
+    {nombre: 'Javascript', precio: 15000},
+    {nombre: 'ReactJS', precio: 22000},
+    {nombre: 'AngularJS', precio: 22000},
+    {nombre: 'Desarrollo Web', precio: 16000}
+]
+const nombres = cursos.map((el) => el.nombre)
+console.log(nombres) // [ 'Javascript', 'ReactJS', 'AngularJS', 'Desarrollo Web' ]
+
+const actualizado = cursos.map((el) => {
+    return{
+        nombre: el.nombre,
+        precio: el.precio * 1.25
+    }
+});
+
+console.log(actualizado)
+
+// [
+//   { nombre: 'Javascript', precio: 18750 },
+//   { nombre: 'ReactJS', precio: 27500 },
+//   { nombre: 'AngularJS', precio: 27500 },
+//   { nombre: 'Desarrollo Web', precio: 20000 }
+// ]
+
+~~~
+
+#### Reduce
+
+Nos permite obtener un unico valor tras iterar sobre el array. Funciona como un metodo que resume el array a un unico valor de retorno.
+
+> Ejemplos aplicados
+> Cuando queremos acumular la suma de alguna propiedad de los elementos
+> O cuando deseamos obtener algun resultado general sobre todo el array
+
+A diferencia de los metodos anteriores, el metodo reduce recibe dos parametros.
+
+- El primero es la funciona que ordena que queremos resumir del array. Recibe un parametro que funciona como acumuladore, y el elemento del array que iteramos.
+- El segundo el el valor inicial del acumulador.
+
+~~~js
+const numeros = [1, 2, 3, 4, 5, 6]
+const total = numeros.reduce((acumulador, elemento) => cumulador + elemento, 0)
+
+console.log(total) // 21
+~~~
+
+En este ejemplo, en el acumulador sumamos cada elemento de larray y al terminar la iteracion nos devuelve ese resultado. El segundo parametro del reduce, que aqui se ve como 0, es el valor inicial del acumulador.
+
+#### Sort
+
+Nos permite reordenar un array segun un criterio que definamos. Recibe una funcion de comparacion por parametro que, a la vez, recibe dos elementos del array. La funcion retorna un valor numerico (1, -1, 0) que indica que elemento se posiciona antes o despues.
+
+> El metodo es desctructivo, es decir, modifica el array sobre el cual se llama.
+
+Para ordenar numeros, basta con restar uno al otro y el orden indica si sera ordenado de forma asendente o descendente:
+
+~~~js
+const numeros = [40, 1, 5, 200];
+numeros.sort((a,b) => a - b) // [ 1, 5, 40, 200 ]
+nuneros.sort((a,b) => b - a) // [ 200, 40, 5, 1 ]
+~~~
+
+Para ordenar un array por algun string, debemos definir una funcion comparadora que retorne un valor numerico de referencia, segun queresmo el orden ascendente o descendente: 
+
+~~~js
+const items = [
+    {nombre: 'Pikachu', precio: 21},
+    {nombre: 'Charmander', precio: 37},
+    {nombre: 'Pidgey', precio: 45},
+    {nombre: 'Squietle', precio: 60}
+]
+
+items.sort((a,b) => {
+    if(a.nombre > b.nombre) {
+        return 1;
+    }
+    if(a.nombre < b.nombre){
+        return -1;
+    }
+    return 0
+})
+
+/*
+[
+  { nombre: 'Charmander', precio: 37 },
+  { nombre: 'Pidgey', precio: 45 },
+  { nombre: 'Pikachu', precio: 21 },
+  { nombre: 'Squietle', precio: 60 }
+]
+*/
+~~~
+
+## Funciones de alto orden 2
+
+### Math
+
+Js provee el objeto Math, que funcioa como un contendeor de herramientas y metodos para realizar operaciones matematicas
+
+#### Propiedades
+
+Se puede acceder a algunas constantes matematicas a traves del obejto Math, como puede ser el numero Pi o la constante de Euler.
+
+Otras de las propiedades son:
+
+- min y max
+- ceil, floor, round
+- square, root
+- random
+
+##### Min & Max
+
+Estos metodos reciben una serie de argumentos numericos y devuelven aquel de valor maximo o minimo, segun corresponda. tambien se pueden referenciar los valores de infinito positivo o negatvio a traves de la variable global ~infinity~ de tipo number:
+
+~~~js
+console.log (Math.max(55, 12 , 9, -24, 83, 4)) //83
+console.log (Math.min(55, 12 , 9, -24, 83, 4)) //4
+
+console.log (Math.max(55, 12 , infinity, -24, 83, 4)) // infinity
+~~~
+
+##### Ceil / Floor / Round
+
+Sirver para redondear un valor numerico a un numero entero cercano:
+
+~~~js
+cont pi = Math.pi //3.14...
+
+// ceil: devuelve el entero mayor o igual mas proximo
+console.log(Math.ceil(pi)) // 4
+
+//floor: devuelve el entero mas cercano redondeando hacia abajo
+console.log(Math.floor(pi)) // 3
+
+// Round retorna el valor de un numero redondeado al entero mas cercano
+console.log(Math.round(pi)) // 4
+~~~
+
+##### Square Root
+
+El metodo Math.sqtr() retorna la raiz cuadrada de un numero. si se le envia un numero negativo. el metodo retorna NaN.
+
+~~~js
+Math.sqtr(9) // 3
+Math.sqtr(2) // 1.4
+Math.sqtr(1) // 1
+Math.sqtr(-1) // NaN
+~~~
+
+##### Random
+
+Genera un numero pseudo-aleatorio entre 0 y 1, siendo el 0 limite inclusivo y 1 exclusivo.
+
+~~~js
+//numeros entre 0 y 10 
+console.log(Math.random() * 10)
+
+// numeros entre 0 y 50
+console.lgo(Math.random() * 50)
+
+// numeros entre 20 y 50
+
+console.log(Math.random() * 30 + 20)
+~~~
+
+##### Redondeo
+
+Al usar math,round, esta fucnion retornara numeros aleatorios en el rango de 0 - 100 inclusivo. Si usara Math.celll los numeros irian del 1 a 100, ya que siempre rdondearia hacia arriba, y si se usar floor, el rango seria de 0 a 99
+
+~~~js
+const generandoNumero = () => {
+    return Math.round(Math,random() * 100)
+}
+~~~
+
+### Date Clase 8 falta la parte de date
+
+In

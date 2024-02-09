@@ -1,0 +1,14 @@
+[
+    {
+        "nombre": "milanesa a la napolitana",
+        "precio": 1250
+    },
+    {
+        "nombre": "Churrasco con papas",
+        "precio": 3250
+    },
+    {
+        "nombre": "Bife a la Bolognesa",
+        "precio": 4500
+    }
+]
