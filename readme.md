@@ -1208,7 +1208,7 @@ numeros.forEach( (num) => {
 #### Find
 
 recibe una funcion de comparacion por parametro.
-Captura el elemento que se esta recorriendo y retorna true o dalse segun la comparacion ejecutada. El metodo retrna el primer elemento que cumpla con esa condicion: 
+Captura el elemento que se esta recorriendo y retorna true o dalse segun la comparacion ejecutada. El metodo retrna el primer elemento que cumpla con esa condicion:
 
 ~~~js
 const cursos = [
@@ -1327,7 +1327,7 @@ numeros.sort((a,b) => a - b) // [ 1, 5, 40, 200 ]
 nuneros.sort((a,b) => b - a) // [ 200, 40, 5, 1 ]
 ~~~
 
-Para ordenar un array por algun string, debemos definir una funcion comparadora que retorne un valor numerico de referencia, segun queresmo el orden ascendente o descendente: 
+Para ordenar un array por algun string, debemos definir una funcion comparadora que retorne un valor numerico de referencia, segun queresmo el orden ascendente o descendente:
 
 ~~~js
 const items = [
@@ -1440,5 +1440,3 @@ const generandoNumero = () => {
 ~~~
 
 ### Date Clase 8 falta la parte de date
-
-In
