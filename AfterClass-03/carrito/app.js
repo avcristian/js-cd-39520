@@ -157,6 +157,6 @@ function vaciarCarrito()
                 icon: 'success'
               });
             }
-         });
+        });
           
 }
