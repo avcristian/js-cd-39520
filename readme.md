@@ -1040,7 +1040,7 @@ for (const producto of productos){
 }
 ~~~
 
-### Ejemplo aplicado:
+### Ejemplo aplicado
 
 Objetos, productos y array
 
@@ -1116,6 +1116,7 @@ console.log(resta(4, 6)) // 2
 
 Significa escrbir funciones que puedan recibir funciones por parametro.
 Ejemplo
+
 ~~~js
 function porCadaUno(arr, fn){
     for(const el off arr){
@@ -1148,3 +1149,4 @@ Enviando **console.log** por parametro, se ejecura esa funcion con cada elemento
 
 ~~~js
 let total = 0
+~~~
