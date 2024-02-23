@@ -1149,4 +1149,3 @@ Enviando **console.log** por parametro, se ejecura esa funcion con cada elemento
 
 ~~~js
 let total = 0
-~~~
